@@ -1,0 +1,63 @@
+/* CSS declarations go here */
+
+/*header*/
+#header{
+  height: 80px;
+
+}
+
+#header .login-display-name{
+  color: green;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+#header #profilePic{
+  display: inline-block;
+}
+
+#greeting{
+  display: inline-block;
+}
+
+/*games*/
+
+.game-wrapper{
+  padding: 10px 20px;
+  width: 300px;
+  margin: 10px 20px;
+  background: lightgrey;
+}
+
+.game-wrapper .game-title{
+  text-align: center
+}
+
+.games-wrapper .spread-wrapper{
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.spread{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.awaySpread{
+  float: left;
+}
+.homeSpread{
+  float: right;
+}
+
+.over-under-wrapper{
+  clear:both;
+}
+
+.delete-game{
+  width: 300px;
+  margin: 0 auto;
+}
+#new-game input{
+  display: block
+}

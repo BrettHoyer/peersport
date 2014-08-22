@@ -1,0 +1,13 @@
+{
+  "name": "sporting",
+  "description": "peer sporting application",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x"
+  },
+  "devDependencies": {
+    "body-parser": "^1.6.5",
+    "nodemon": "^1.2.1"
+  }
+}
