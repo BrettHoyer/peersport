@@ -1,12 +1,26 @@
 angular.module('OddsController', []).controller('OddsController', function($scope, $http){
+
+  $scope.getTeams = function(){
+    $http.get('/teams').success(function(data){
+      console.log("returned Data: ", data);
+      $scope.teams = data;
+    })
+  }
+
+  $scope.getTeams()
 	$scope.addOdds = function(){
-		$http.post('/newOdds', {data: $scope.oddsFormData}).success(function(data){
-			console.log(data);
-			$scope.homeTeam = data.addHome
-			$scope.awayTeam = data.addAway
-			$scope.homeLine = data.addHomeLine
-			$scope.awayLine = data.addAwayLine
+    console.log($scope.oddsForm)
+		$http.post('/newOdds', {data: $scope.oddsForm}).success(function(data){
+      console.log("returned Data: ", data);
 		})
 
 	}
+
+  $scope.addTeam = function(){
+    console.log($scope.teamFormData)
+    $http.post('/newTeam', {data: $scope.teamFormData}).success(function(data){
+      console.log("returned Data: ", data);
+    })
+
+  }
 })

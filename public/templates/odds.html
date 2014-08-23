@@ -1,19 +1,33 @@
 <h1>ODDS</h1>
 
 <form id='newOddsForm' ng-submit="addOdds()">
-	<label>Add Home Team</label>
-	<input type='text' ng-model='oddsFormData.addHome'/>
-	<label>Add Away Team</label>
-	<input type='text' ng-model='oddsFormData.addAway'/>
+  <label>Add Title</label>
+  <input type='text' ng-model='oddsForm.title'/>
+  <select ng-model='oddsForm.home_team' ng-options='team.name for team in teams'>
+    <option value=''>SET HOME TEAM</option>
+  </select>
+
+  <select ng-model='oddsForm.away_team' ng-options='team.name for team in teams'>
+    <option value=''>SET AWAY TEAM</option>
+  </select>
 	<label>Add Home Line</label>
-	<input type='text' ng-model='oddsFormData.addHomeLine'/>
+	<input type='text' ng-model='oddsForm.home_line'/>
 	<label>Add Away Line</label>
-	<input type='text' ng-model='oddsFormData.addAwayLine'/>
-	<input type='submit' value='Sumbit that shit'>
+	<input type='text' ng-model='oddsForm.away_line'/>
+	<input type='submit' value='Sumbit Game'>
 </form>
 
 
-  <div class='game-wrapper'>
+<form id='newTeamForm' ng-submit="addTeam()">
+  <label>Add Team Name</label>
+  <input type='text' ng-model='teamFormData.name'/>
+  <input type='submit' value='Sumbit Team'>
+</form>
+
+
+
+
+<!--   <div class='game-wrapper'>
     <h3 class='game-title'>{{gameTitle}}</h3>
     <section class='spread-wrapper'>
       <span class='awaySpread spread'>
@@ -30,7 +44,7 @@
       <span class='homeSpread spread'>
         <input type='radio' name='spread' value={{this.homeTeam}}> <p> Over {{gameOverUnder}}</p>
       </span>
-    </section>
+    </section> -->
 
     <!-- {{#if isAdmin}}
     <button class='delete-game'>Delete Game</button>
