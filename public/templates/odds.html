@@ -31,10 +31,10 @@
     <h3 class='game-title'>{{wager.title}}</h3>
     <section class='spread-wrapper'>
       <span class='awaySpread spread'>
-        <input type='radio' name='spread' value={{wager.awayTeam}}> <p>{{awayTeam}} {{wager.away_line}}</p>
+        <input type='radio' name='spread' value={{wager.awayTeam}}> <p>{{wager.away_team.name}} {{wager.away_line}}</p>
       </span>
       <span class='homeSpread spread'>
-        <input type='radio' name='spread' value={{this.homeTeam}}> <p>{{homeTeam}} {{wager.home_line}}</p>
+        <input type='radio' name='spread' value={{this.homeTeam}}> <p>{{wager.home_team.name}} {{wager.home_line}}</p>
       </span>
     </section>
     <section class='over-under-wrapper'>

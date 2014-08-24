@@ -6,14 +6,13 @@ module.exports = {
 
   wagers:{
     new: function(data){
-      var wager = Wager.build(data);
-      wager.save();
+      new Wager(data).save();
     },
 
     all: function(req, res){
-      Wager.findAll({include: [{model: Team}] }).success(function(wagers){
-        res.send(wagers);
-      })
+      new Wager().fetchAll({withRelated: ['home_team', 'away_team']}).then(function(model){
+        res.send(model);
+      })  
     }
   
   }, 
@@ -21,16 +20,14 @@ module.exports = {
   teams: {
     new: function(data){
 
-      var team = Team.build(data);
-      team.save();
+      new Team(data).save()
 
     },
 
     all: function(req, res){
-      Team.findAll().success(function(teams){
-
-        res.send(teams);
-      });  
+      Team.fetchAll().then(function(model){
+        res.send(model);
+      })
     }
 
   }
