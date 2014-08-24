@@ -2,16 +2,24 @@ angular.module('OddsController', []).controller('OddsController', function($scop
 
   $scope.getTeams = function(){
     $http.get('/teams').success(function(data){
-      console.log("returned Data: ", data);
+      console.log("returned teams: ", data);
       $scope.teams = data;
     })
   }
 
-  $scope.getTeams()
+  $scope.getWagers = function(){
+    $http.get('/wagers').success(function(data){
+      console.log("returned wagers: ", data);
+      $scope.wagers = data;
+    })
+  }
+
+  $scope.getWagers();
+  $scope.getTeams();
 	$scope.addOdds = function(){
     console.log($scope.oddsForm)
 		$http.post('/newOdds', {data: $scope.oddsForm}).success(function(data){
-      console.log("returned Data: ", data);
+      console.log("posted odds data: ", data);
 		})
 
 	}
@@ -19,7 +27,7 @@ angular.module('OddsController', []).controller('OddsController', function($scop
   $scope.addTeam = function(){
     console.log($scope.teamFormData)
     $http.post('/newTeam', {data: $scope.teamFormData}).success(function(data){
-      console.log("returned Data: ", data);
+      console.log("posted team data: ", data);
     })
 
   }

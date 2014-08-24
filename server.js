@@ -23,4 +23,5 @@ app.post('/newTeam', function(req, res){
 })
 
 app.get('/teams', db.teams.all);
+app.get('/wagers', db.wagers.all);
 app.listen(3000);

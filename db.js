@@ -1,14 +1,19 @@
 var models = require('./server/models');
 var Team = models.Team;
-var Game = models.Game;
+var Wager = models.Wager;
 
 module.exports = {
 
-  games:{
+  wagers:{
     new: function(data){
-      var game = Game.build(data);
-      game.setTeams([data.home_team, data.away_team])
-      game.save();
+      var wager = Wager.build(data);
+      wager.save();
+    },
+
+    all: function(req, res){
+      Wager.findAll({include: [{model: Team}] }).success(function(wagers){
+        res.send(wagers);
+      })
     }
   
   }, 
@@ -23,7 +28,8 @@ module.exports = {
 
     all: function(req, res){
       Team.findAll().success(function(teams){
-        res.send(teams)
+
+        res.send(teams);
       });  
     }
 
