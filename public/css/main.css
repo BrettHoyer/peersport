@@ -1,63 +1,31 @@
-/* CSS declarations go here */
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+}
 
 /*header*/
-#header{
-  height: 80px;
 
+/*wagers*/
+
+.wager-wrapper{
+  width: 100%
 }
 
-#header .login-display-name{
-  color: green;
-  line-height: 50px;
-  vertical-align: middle;
+.wager-button{
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid black;
+  background: none;
+  cursor: pointer;
+  font: inherit;
 }
 
-#header #profilePic{
-  display: inline-block;
+.wager-button.selected{
+  background: black;
+  color: white;
 }
 
-#greeting{
-  display: inline-block;
-}
 
-/*games*/
-
-.game-wrapper{
-  padding: 10px 20px;
-  width: 300px;
-  margin: 10px 20px;
-  background: lightgrey;
-}
-
-.game-wrapper .game-title{
-  text-align: center
-}
-
-.games-wrapper .spread-wrapper{
-  min-width: 300px;
-  margin: 0 auto;
-}
-
-.spread{
-  display: inline-block;
-  margin-left: 10px;
-}
-
-.awaySpread{
-  float: left;
-}
-.homeSpread{
-  float: right;
-}
-
-.over-under-wrapper{
-  clear:both;
-}
-
-.delete-game{
-  width: 300px;
-  margin: 0 auto;
-}
-#new-game input{
+#new-wager input{
   display: block
 }

@@ -16,9 +16,13 @@ angular.module('OddsController', []).controller('OddsController', function($scop
 
   $scope.getWagers();
   $scope.getTeams();
+
+  $scope.selectWager = function(wager, homeOrAway){
+    wager.selected = homeOrAway;
+  }
 	$scope.addOdds = function(){
     console.log($scope.oddsForm)
-		$http.post('/newOdds', {data: $scope.oddsForm}).success(function(data){
+		$http.post('/newWager', {data: $scope.oddsForm}).success(function(data){
       console.log("posted odds data: ", data);
 		})
 
@@ -29,6 +33,5 @@ angular.module('OddsController', []).controller('OddsController', function($scop
     $http.post('/newTeam', {data: $scope.teamFormData}).success(function(data){
       console.log("posted team data: ", data);
     })
-
   }
 })

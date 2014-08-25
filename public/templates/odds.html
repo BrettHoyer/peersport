@@ -18,7 +18,7 @@
 </form>
 
 
-<form id='newTeamForm' ng-submit="addTeam()">
+<form id='new-wager-form' ng-submit="addTeam()">
   <label>Add Team Name</label>
   <input type='text' ng-model='teamFormData.name'/>
   <input type='submit' value='Sumbit Team'>
@@ -27,26 +27,12 @@
 
 
 
-  <div class='game-wrapper' ng-repeat='wager in wagers'>
-    <h3 class='game-title'>{{wager.title}}</h3>
-    <section class='spread-wrapper'>
-      <span class='awaySpread spread'>
-        <input type='radio' name='spread' value={{wager.awayTeam}}> <p>{{wager.away_team.name}} {{wager.away_line}}</p>
-      </span>
-      <span class='homeSpread spread'>
-        <input type='radio' name='spread' value={{this.homeTeam}}> <p>{{wager.home_team.name}} {{wager.home_line}}</p>
-      </span>
-    </section>
-    <section class='over-under-wrapper'>
-      <span class='awaySpread spread'>
-        <input type='radio' name='spread' value={{this.awayTeam}}> <p> Under {{gameOverUnder}}</p>
-      </span>
-      <span class='homeSpread spread'>
-        <input type='radio' name='spread' value={{this.homeTeam}}> <p> Over {{gameOverUnder}}</p>
-      </span>
-    </section>
+  <div class='wager-wrapper' ng-repeat='wager in wagers'>
+    <h3 class='wager-title'>{{wager.title}}</h3>
+    <button class='wager-button' ng-class="{'selected': wager.selected=='away'}"ng-click='selectWager(wager, "away")'>{{wager.away_team.name}} {{wager.away_line}}</button>
+    <button class='wager-button' ng-class="{'selected': wager.selected=='home'}" ng-click='selectWager(wager, "home")'>{{wager.home_team.name}} {{wager.home_line}}</button>
 
-    <!-- {{#if isAdmin}}
-    <button class='delete-game'>Delete Game</button>
-    {{/if}} -->
+
+
+
   </div>
