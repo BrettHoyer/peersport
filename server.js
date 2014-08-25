@@ -9,10 +9,10 @@ db = require('./db');
 app.use(bodyParser());    
 app.use(express.static(__dirname + '/public'));
 
-app.post('/newOdds', function(req, res){
+app.post('/newWager', function(req, res){
   var data = req.body.data;
   console.log('req', req)
-  db.games.new(data);
+  db.wagers.new(data);
 	res.send(req.body.data)
 })
 app.post('/newTeam', function(req, res){
