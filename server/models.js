@@ -1,3 +1,4 @@
+var bcrypt   = require('bcrypt-nodejs');
 var dbInfo = require('./env').database;
 var knex = require('knex')({
   client: 'mysql',
@@ -50,6 +51,7 @@ knex.schema.hasTable('Users').then(function(exists){
     knex.schema.createTable('Users', function (table) {
       table.increments();
       table.string('name');
+      table.string('password');
       table.timestamps();
     }).then(function () {
       console.log('Created Table Users');

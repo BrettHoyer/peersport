@@ -1,27 +1,32 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
-db = require('./db');
-
+var methodOverride = require('method-override');
 
 
-app.use(bodyParser());    
+var port     = process.env.PORT || 3000;
+var passport = require('passport');
+var flash    = require('connect-flash');
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
+
+
+app.use(morgan('dev')); // log every request to the console
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride());
 
-app.post('/newWager', function(req, res){
-  var data = req.body.data;
-  console.log('req', req)
-  db.wagers.new(data);
-	res.send(req.body.data)
-})
-app.post('/newTeam', function(req, res){
-  var data = req.body.data;
-  console.log('req', req)
-  db.teams.new(data);
-  res.send(req.body.data)
-})
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/teams', db.teams.all);
-app.get('/wagers', db.wagers.all);
-app.listen(3000);
+// required for passport
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+require('./server/router.js')(app, passport);
+app.listen(port);
