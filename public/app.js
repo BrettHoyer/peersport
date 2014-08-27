@@ -8,11 +8,12 @@ angular.module('sporting', [
 
 // Services
 angular.module('sporting.services', [
-
+  'ApiService'
 ]);
 
 // Controllers
 angular.module('sporting.controllers', [
 	'HomeController',
-	'OddsController'
+	'OddsController',
+  'GroupsController'
 ]);
